@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.my_app.ui.home.HomeFragment;
-import com.example.my_app.ui.notifications.NotificationsFragment;
+import io.flutter.embedding.android.FlutterFragment;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -32,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frag_container, homeFragment, "home");
-        fragmentTransaction.add(R.id.frag_container, notificationsFragment, "cart");
-        fragmentTransaction.commitAllowingStateLoss();
+        fragmentTransaction.add(R.id.frag_container, flutterFragment, "cart");
+        fragmentTransaction.commit();
         switchTo("home");
     }
 
-    private HomeFragment homeFragment = new HomeFragment();
+    private final HomeFragment homeFragment = new HomeFragment();
 
-    private NotificationsFragment notificationsFragment = new NotificationsFragment();
-
+    private final FlutterFragment flutterFragment = FlutterFragment.withNewEngine()
+            .build();
 
     private void switchTo(String tag) {
 
@@ -48,14 +47,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
         if (tag.equals("home")) {
             fragmentTransaction.show(homeFragment);
-            fragmentTransaction.hide(notificationsFragment);
-//            fragmentTransaction.replace(R.id.frag_container, new HomeFragment());
+            fragmentTransaction.hide(flutterFragment);
         } else {
-            fragmentTransaction.show(notificationsFragment);
             fragmentTransaction.hide(homeFragment);
-//            fragmentTransaction.replace(R.id.frag_container, new NotificationsFragment());
+            fragmentTransaction.show(flutterFragment);
         }
-        fragmentTransaction.commitNowAllowingStateLoss();
+        fragmentTransaction.commit();
     }
 
 }

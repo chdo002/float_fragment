@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/text_home"
-        android:text="this is home fragment, click to Detail Activity"
+        android:text="this is home fragment,\n click to Detail Activity"
         android:textColor="@color/cardview_dark_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

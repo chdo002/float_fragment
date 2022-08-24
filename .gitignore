@@ -12,3 +12,7 @@ key.properties
 **/*.keystore
 **/*.jks
 .DS_Store
+.dart_tool
+.idea
+build
+.packages
