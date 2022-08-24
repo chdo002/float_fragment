@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void switchTo(String tag) {
 
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         if (tag.equals("home")) {
             fragmentTransaction.show(homeFragment);
             fragmentTransaction.hide(flutterFragment);
