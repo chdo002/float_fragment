@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final HomeFragment homeFragment = new HomeFragment();
 
-    private final FlutterFragment flutterFragment = FlutterFragment.withNewEngine()
+    private final FlutterFragment flutterFragment = MyFlutterFragment.withNewEngine()
             .build();
 
     private void switchTo(String tag) {
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.show(homeFragment);
             fragmentTransaction.hide(flutterFragment);
         } else {
-            fragmentTransaction.hide(homeFragment);
             fragmentTransaction.show(flutterFragment);
+            fragmentTransaction.hide(homeFragment);
         }
         fragmentTransaction.commit();
     }
